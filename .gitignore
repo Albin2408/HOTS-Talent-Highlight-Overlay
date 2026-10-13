@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+.claude/
+*.user
+dist/
+
+# Third-party data generated locally by tools/refresh-builds.sh. Not redistributed: it is Icy Veins'
+# (and optionally HeroesProfile's) content. See the README.
+src/HotsOverlay.App/SeedBuilds/
+tests/HotsOverlay.Scraper.Tests/Fixtures/real/
+.patch-cache.tmp

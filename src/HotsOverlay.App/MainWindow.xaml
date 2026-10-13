@@ -1,0 +1,72 @@
+<Window x:Class="HotsOverlay.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotsOverlay.App"
+        mc:Ignorable="d"
+        Title="HOTS Talent Overlay" Height="680" Width="1040"
+        Background="#1b1f27">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#2f6fa8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#252b36"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="BorderBrush" Value="#3a4150"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left: hero search + list -->
+        <DockPanel Grid.Column="0">
+            <TextBlock DockPanel.Dock="Top" Text="Hero" Foreground="#9fb3c8" FontWeight="Bold" Margin="0,0,0,4"/>
+            <TextBox x:Name="SearchBox" DockPanel.Dock="Top" Margin="0,0,0,6"
+                     TextChanged="SearchBox_TextChanged" />
+            <ListBox x:Name="HeroListBox" DisplayMemberPath="Name"
+                     Background="#20242e" Foreground="White" BorderThickness="0"
+                     SelectionChanged="HeroListBox_SelectionChanged"/>
+        </DockPanel>
+
+        <!-- Right: hero header, active build status, build cards -->
+        <DockPanel Grid.Column="2">
+            <TextBlock x:Name="HeroHeaderText" DockPanel.Dock="Top" Text="Pick a hero to see its builds"
+                       Foreground="White" FontSize="20" FontWeight="Bold" Margin="0,0,0,8"/>
+
+            <Button x:Name="AddBuildButton" DockPanel.Dock="Top" Content="+ Add my own build for this hero"
+                    HorizontalAlignment="Left" Margin="0,0,0,10" IsEnabled="False"
+                    Click="AddBuildButton_Click"/>
+
+            <Border DockPanel.Dock="Bottom" Background="#20242e" Padding="10" Margin="0,10,0,0">
+                <DockPanel>
+                    <CheckBox x:Name="AutoDetectCheck" DockPanel.Dock="Right" Content="Auto-detect my hero in game"
+                              Foreground="#9fb3c8" VerticalAlignment="Center" Margin="14,0,0,0"
+                              Checked="AutoDetectCheck_Changed" Unchecked="AutoDetectCheck_Changed"
+                              ToolTip="Recognizes your hero from the talent cards when the talent panel opens, and picks its build for you."/>
+                    <CheckBox x:Name="FullScreenScanCheck" DockPanel.Dock="Right" Content="Scan whole screen (slower)"
+                              Foreground="#9fb3c8" VerticalAlignment="Center" Margin="0,0,14,0"
+                              Checked="FullScreenScanCheck_Changed" Unchecked="FullScreenScanCheck_Changed"
+                              ToolTip="Only needed if the highlight never appears: by default only the left side of the game, where the talent panel is, gets scanned."/>
+                    <TextBlock x:Name="StatusText" Text="Start a match in HOTS: your hero is detected when the talent panel opens." Foreground="#9fb3c8"
+                               VerticalAlignment="Center" Margin="0,0,10,0"/>
+                </DockPanel>
+            </Border>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="BuildsHost"/>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

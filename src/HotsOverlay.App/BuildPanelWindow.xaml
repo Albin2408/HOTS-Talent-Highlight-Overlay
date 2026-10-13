@@ -1,0 +1,29 @@
+<Window x:Class="HotsOverlay.App.BuildPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HOTS Build"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        MaxWidth="360"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Border Background="#EB141821" BorderBrush="#3a4150" BorderThickness="1" CornerRadius="8" Padding="10">
+        <StackPanel>
+            <TextBlock x:Name="HeaderText" Foreground="White" FontWeight="Bold" FontSize="15"/>
+            <TextBlock x:Name="SubHeaderText" Foreground="#8ea3b8" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,6"/>
+            <TextBlock x:Name="StatusText" Foreground="#ffb347" FontSize="11" TextWrapping="Wrap"
+                       Margin="0,0,0,6" Visibility="Collapsed"/>
+            <WrapPanel x:Name="BuildButtons" Margin="0,0,0,6"/>
+            <StackPanel x:Name="RowsHost"/>
+            <TextBlock x:Name="AutoDetectText" Foreground="#8ea3b8" FontSize="10" Margin="0,8,0,0"
+                       Cursor="Hand" MouseLeftButtonDown="AutoDetectText_MouseLeftButtonDown"/>
+            <TextBlock x:Name="HintText" Foreground="#5c6b7a" FontSize="10" TextWrapping="Wrap" Margin="0,2,0,0"/>
+            <TextBlock x:Name="FreshnessText" FontSize="10" TextWrapping="Wrap" Margin="0,2,0,0"/>
+        </StackPanel>
+    </Border>
+</Window>

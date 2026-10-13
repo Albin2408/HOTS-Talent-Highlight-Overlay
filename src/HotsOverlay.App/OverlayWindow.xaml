@@ -1,0 +1,28 @@
+<Window x:Class="HotsOverlay.App.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HOTS Talent Overlay"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        ResizeMode="NoResize"
+        Left="0" Top="0" Width="800" Height="600">
+    <Canvas x:Name="OverlayCanvas" IsHitTestVisible="False">
+        <Border x:Name="HighlightBox"
+                BorderBrush="#FFD54A" BorderThickness="4" CornerRadius="8"
+                Background="#2200FF66"
+                Visibility="Collapsed"
+                IsHitTestVisible="False">
+            <Border.Effect>
+                <DropShadowEffect Color="#FFD54A" BlurRadius="22" ShadowDepth="0" Opacity="0.95"/>
+            </Border.Effect>
+            <Border Background="#FFD54A" CornerRadius="0,0,0,6" Padding="8,2"
+                    HorizontalAlignment="Right" VerticalAlignment="Top">
+                <TextBlock Text="★ PICK THIS" FontWeight="Bold" FontSize="14" Foreground="#1b1f27"/>
+            </Border>
+        </Border>
+    </Canvas>
+</Window>
